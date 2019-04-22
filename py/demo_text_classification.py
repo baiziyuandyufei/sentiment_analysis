@@ -39,9 +39,17 @@ def predict(classifier, text):
 
 
 if __name__ == '__main__':
+    run_mode = 'batch'
     # 训练或加载朴素贝叶斯分类器
     classifier = train_or_load_classifier()
-    # 预测
-    predict(classifier, "前台客房服务态度非常好！早餐很丰富，房价很干净。再接再厉！")
-    predict(classifier, "结果大失所望，灯光昏暗，空间极其狭小，床垫质量恶劣，房间还伴着一股霉味。")
-    predict(classifier, "可利用文本分类实现情感分析，效果还行")
+    if run_mode == 'debug':
+        while True:
+            text = input("请输入文本:\n")
+            if text == "q":
+                break
+            predict(classifier, text)
+    else:
+        # 预测
+        predict(classifier, "运筹帷幄，高瞻远瞩，大国设计师！主席您辛苦了，向您致敬！[赞][赞][赞]")
+        predict(classifier, "一张都没有看对。很郁闷。是不是手机玩多了。")
+        predict(classifier, "麻城龟山人路过，给家乡大大的赞[爱慕][玫瑰]")
